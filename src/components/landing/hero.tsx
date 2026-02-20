@@ -10,7 +10,7 @@ const Hero = () => {
 						className="font-mono text-xs uppercase tracking-widest mb-4"
 						style={{ color: "#cc4422" }}
 					>
-						// Poster Lab Edition 2.0
+						// Your Music, On Your Wall
 					</p>
 					<h1
 						className="uppercase mb-8"
@@ -23,17 +23,11 @@ const Hero = () => {
 							lineHeight: "0.9",
 						}}
 					>
-						ANALOG
-						<br />
-						SOUL
-						<br />
-						DIGITAL
-						<br />
-						PULP.
+						Display the Music You Love
 					</h1>
 					<p className="text-lg font-medium text-neutral-700 mt-8">
-						Transform your sonic library into tactile monoliths. We blend
-						high-fidelity data with the raw imperfection of fibrous paper.
+						Turn your favorite albums into beautiful, printable posters. Choose
+						your style, pick your paper, hang your sound.
 					</p>
 					<Link
 						to="/create"
@@ -43,7 +37,7 @@ const Hero = () => {
 							clipPath: "polygon(3% 0%, 100% 0%, 97% 100%, 0% 100%)",
 						}}
 					>
-						Enter The Lab
+						Open the editor
 					</Link>
 				</div>
 
