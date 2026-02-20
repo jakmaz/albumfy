@@ -16,7 +16,7 @@ const Hero = () => {
 						className="uppercase mb-8"
 						style={{
 							color: "rgb(19, 19, 19)",
-							fontSize: "clamp(4rem, 10vw, 10rem)",
+							fontSize: "clamp(4rem, 10vw, 6rem)",
 							fontWeight: 900,
 							letterSpacing: "-0.04em",
 							fontFamily: "Inter, sans-serif",
@@ -26,8 +26,8 @@ const Hero = () => {
 						Display the Music You Love
 					</h1>
 					<p className="text-lg font-medium text-neutral-700 mt-8">
-						Turn your favorite albums into beautiful, printable posters. Choose
-						your style, pick your paper, hang your sound.
+						Turn your favorite albums and songs into beautiful, printable
+						posters. Choose your style, pick your paper, hang your sound.
 					</p>
 					<Link
 						to="/create"
