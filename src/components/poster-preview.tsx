@@ -10,6 +10,15 @@ interface PosterPreviewProps {
 		showArtist: boolean;
 		showYear: boolean;
 		showTracklist: boolean;
+		showGenre: boolean;
+		showLabel: boolean;
+	};
+	manualInput?: {
+		title: string;
+		artist: string;
+		year: string;
+		genre: string;
+		label: string;
 	};
 }
 
@@ -45,9 +54,12 @@ const mockTracks = [
 	"08 — Neon Echoes",
 ];
 
-const PosterPreview = ({ selection, layout, settings }: PosterPreviewProps) => {
-	const title = selection?.title || "Neon Echoes";
-	const artist = selection?.artist || "Glass Parallel";
+const PosterPreview = ({ selection, layout, settings, manualInput }: PosterPreviewProps) => {
+	const title = selection?.title || manualInput?.title || "Neon Echoes";
+	const artist = selection?.artist || manualInput?.artist || "Glass Parallel";
+	const year = manualInput?.year || "2024";
+	const genre = manualInput?.genre || "Electronic";
+	const label = manualInput?.label || "Independent";
 	const bg = paperColors[settings.paperColor] || paperColors.cream;
 	const ink = inkColors[settings.inkColor] || inkColors.black;
 	const fontClass = fontClasses[settings.font] || fontClasses.inter;
@@ -162,13 +174,14 @@ const PosterPreview = ({ selection, layout, settings }: PosterPreviewProps) => {
 							}}
 						>
 							{settings.showYear && (
-								<>
-									<span>Release // 2024</span>
-									<span>Label // Independent</span>
-								</>
+								<span>Release // {year}</span>
 							)}
-							<span>Track No // 08</span>
-							<span>Duration // 04:22</span>
+							{settings.showGenre && (
+								<span>Genre // {genre}</span>
+							)}
+							{settings.showLabel && (
+								<span>Label // {label}</span>
+							)}
 						</div>
 					</div>
 				</div>

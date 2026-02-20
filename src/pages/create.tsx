@@ -37,6 +37,13 @@ const Create = () => {
 	const [layout, setLayout] = useState("standard");
 	const [orientation, setOrientation] = useState("portrait");
 	const posterRef = useRef<HTMLDivElement>(null);
+	const [manualInput, setManualInput] = useState({
+		title: "",
+		artist: "",
+		year: "",
+		genre: "",
+		label: "",
+	});
 	const [settings, setSettings] = useState({
 		paperColor: "cream",
 		inkColor: "black",
@@ -83,6 +90,7 @@ const Create = () => {
 							selection={selection}
 							layout={layout}
 							settings={settings}
+							manualInput={manualInput}
 						/>
 					</div>
 				</div>
@@ -118,6 +126,8 @@ const Create = () => {
 								onQueryChange={setQuery}
 								onSelect={setSelection}
 								onToggleResults={setShowResults}
+								manualInput={manualInput}
+								onManualInputChange={setManualInput}
 							/>
 						)}
 

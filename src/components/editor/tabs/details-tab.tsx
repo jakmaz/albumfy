@@ -37,7 +37,7 @@ export const DetailsTab = ({ settings, onSettingsChange }: DetailsTabProps) => {
 
 			<div className="mt-auto p-4 bg-neutral-100 rounded-lg">
 				<p className="font-mono text-xs text-neutral-500 mb-2">Metadata Source</p>
-				<p className="text-sm text-neutral-500">Info is pulled from Spotify/Apple Music APIs. Want to customize? Hit export and edit manually.</p>
+				<p className="text-sm text-neutral-500">Enter details manually in the Search tab, or search for an album to auto-fill.</p>
 			</div>
 		</>
 	);
