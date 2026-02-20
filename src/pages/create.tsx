@@ -73,7 +73,7 @@ const Create = () => {
 
 	return (
 		<div className="min-h-screen h-screen bg-background overflow-hidden">
-			<div className="grain-overlay" />
+			<div className="fixed inset-0 pointer-events-none z-[9999] opacity-[0.04] bg-[url('data:image/svg+xml,%3Csvg%20viewBox=%270%200%20200%20200%27%20xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cfilter%20id=%27noiseFilter%27%3E%3CfeTurbulence%20type=%27fractalNoise%27%20baseFrequency=%270.65%27%20numOctaves=%273%27%20stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect%20width=%27100%25%27%20height=%27100%25%27%20filter=%27url(%23noiseFilter)%27/%3E%3C/svg%3E')]" />
 			<Navbar />
 
 			<div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] h-full">
@@ -102,7 +102,7 @@ const Create = () => {
 								"slideUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) 0.1s both",
 						}}
 					>
-						<span className="label-mono">01. Selection</span>
+						<span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">01. Selection</span>
 						<div className="relative">
 							<input
 								type="text"
@@ -159,7 +159,7 @@ const Create = () => {
 								"slideUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) 0.2s both",
 						}}
 					>
-						<span className="label-mono">02. Layout Structure</span>
+						<span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">02. Layout Structure</span>
 						<div className="grid grid-cols-3 gap-2">
 							{layouts.map((l) => (
 								<button
@@ -203,7 +203,7 @@ const Create = () => {
 								"slideUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) 0.3s both",
 						}}
 					>
-						<span className="label-mono">03. Material & Pulp</span>
+						<span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">03. Material & Pulp</span>
 						<div className="flex gap-3">
 							{paperSwatches.map((s) => (
 								<button
@@ -232,14 +232,14 @@ const Create = () => {
 								"slideUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) 0.4s both",
 						}}
 					>
-						<span className="label-mono">04. Ink Palette</span>
+						<span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">04. Ink Palette</span>
 						<div className="flex flex-wrap gap-2">
 							{inkChips.map((chip) => (
 								<button
 									key={chip.id}
 									className={cn(
-										"ink-chip",
-										settings.inkColor === chip.id && "active",
+										"font-mono text-xs border border-muted px-3 py-2 cursor-pointer transition-all duration-300 hover:bg-foreground hover:text-background",
+										settings.inkColor === chip.id && "bg-foreground text-background -translate-y-0.5",
 									)}
 									onClick={() => update({ inkColor: chip.id })}
 								>
@@ -257,12 +257,12 @@ const Create = () => {
 								"slideUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) 0.5s both",
 						}}
 					>
-						<span className="label-mono">05. Typography Refinement</span>
+						<span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">05. Typography Refinement</span>
 						<div className="flex flex-wrap gap-2">
 							{fonts.map((f) => (
 								<button
 									key={f.id}
-									className={cn("ink-chip", settings.font === f.id && "active")}
+									className={cn("font-mono text-xs border border-muted px-3 py-2 cursor-pointer transition-all duration-300 hover:bg-foreground hover:text-background", settings.font === f.id && "bg-foreground text-background -translate-y-0.5")}
 									onClick={() => update({ font: f.id })}
 								>
 									{f.label}
@@ -279,7 +279,7 @@ const Create = () => {
 								"slideUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) 0.6s both",
 						}}
 					>
-						<span className="label-mono">06. Metadata Visibility</span>
+						<span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">06. Metadata Visibility</span>
 						<div className="space-y-3">
 							{[
 								{ key: "showArtist" as const, label: "Artist Name" },

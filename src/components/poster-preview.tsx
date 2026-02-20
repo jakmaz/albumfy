@@ -90,7 +90,7 @@ const PosterPreview = ({ selection, layout, settings }: PosterPreviewProps) => {
 
 				{/* Main poster */}
 				<div
-					className="relative w-full h-full flex flex-col overflow-hidden poster-shadow"
+					className="relative w-full h-full flex flex-col overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
 					style={{
 						background: bg,
 						color: ink,

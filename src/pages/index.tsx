@@ -5,18 +5,18 @@ import Navbar from "@/components/navbar";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background relative">
-      <div className="grain-overlay" />
+      <div className="fixed inset-0 pointer-events-none z-[9999] opacity-[0.04] bg-[url('data:image/svg+xml,%3Csvg%20viewBox=%270%200%20200%20200%27%20xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cfilter%20id=%27noiseFilter%27%3E%3CfeTurbulence%20type=%27fractalNoise%27%20baseFrequency=%270.65%27%20numOctaves=%273%27%20stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect%20width=%27100%25%27%20height=%27100%25%27%20filter=%27url(%23noiseFilter)%27/%3E%3C/svg%3E')]" />
       <Navbar />
 
       {/* Hero */}
       <section className="min-h-screen flex items-center justify-center px-6">
         <div className="text-center max-w-2xl">
-          <p className="label-mono mb-6">Poster Laboratory</p>
+          <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-6">Poster Laboratory</p>
 
           <h1 className="font-sans text-5xl md:text-7xl lg:text-8xl font-extrabold uppercase leading-[0.9] tracking-tighter mb-8">
             Your music,
             <br />
-            <span className="text-gradient">your poster.</span>
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-amber-700">your poster.</span>
           </h1>
 
           <p className="text-base md:text-lg text-muted-foreground max-w-md mx-auto mb-10 leading-relaxed">
@@ -36,7 +36,7 @@ const Index = () => {
       {/* How it works */}
       <section className="py-24 px-6 border-t border-border">
         <div className="max-w-4xl mx-auto">
-          <p className="label-mono mb-8 text-center">Process</p>
+          <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-8 text-center">Process</p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { num: "01", title: "Select", desc: "Search any song or album" },
