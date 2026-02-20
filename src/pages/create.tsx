@@ -32,7 +32,7 @@ const Create = () => {
 		artist: string;
 	} | null>(null);
 	const [showResults, setShowResults] = useState(false);
-	const [layout, setLayout] = useState("standard");
+	const [layout, setLayout] = useState("centered");
 	const posterRef = useRef<HTMLDivElement>(null);
 	const [manualInput, setManualInput] = useState({
 		title: "",

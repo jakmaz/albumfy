@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { layouts } from "@/components/layouts";
 
 interface PosterPreviewProps {
 	selection: { title: string; artist: string } | null;
@@ -71,6 +72,21 @@ const PosterPreview = ({
 	const ink = inkColors[settings.inkColor] || inkColors.black;
 	const fontClass = fontClasses[settings.font] || fontClasses.inter;
 
+	const currentLayout = layouts.find(l => l.id === layout) || layouts[0];
+
+	const layoutProps = {
+		title,
+		artist,
+		year,
+		genre,
+		label,
+		tracklist,
+		bg,
+		ink,
+		fontClass,
+		settings,
+	};
+
 	return (
 		<div
 			className="relative"
@@ -110,84 +126,11 @@ const PosterPreview = ({
 					}}
 				/>
 
-				{/* Main poster */}
+				{/* Main poster - render selected layout */}
 				<div
-					className="relative w-full h-full flex flex-col overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
-					style={{
-						background: bg,
-						color: ink,
-						padding: "clamp(1.2rem, 4vw, 2.5rem)",
-					}}
+					className="relative w-full h-full overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
 				>
-					{/* Art area */}
-					{layout !== "type-only" && (
-						<div
-							className="w-full aspect-square mb-4 md:mb-6 relative overflow-hidden"
-							style={{ background: ink, mixBlendMode: "multiply" }}
-						>
-							<div className="absolute inset-0 flex items-center justify-center opacity-20">
-								<span className="text-6xl" style={{ color: bg }}>
-									♪
-								</span>
-							</div>
-						</div>
-					)}
-
-					{/* Info */}
-					<div className="flex-1 flex flex-col justify-between min-h-0">
-						<div>
-							<h2
-								className={cn("leading-none uppercase break-all", fontClass)}
-								style={{
-									fontSize:
-										layout === "type-only"
-											? "clamp(2rem, 6vw, 4rem)"
-											: "clamp(1.2rem, 4vw, 2.5rem)",
-									letterSpacing: "-0.04em",
-									color: ink,
-								}}
-							>
-								{title}
-							</h2>
-							{settings.showArtist && (
-								<p
-									className="font-mono text-xs mt-2 opacity-50 uppercase tracking-[2px]"
-									style={{ color: ink }}
-								>
-									{artist}
-								</p>
-							)}
-						</div>
-
-						{/* Tracklist */}
-						{settings.showTracklist && (
-							<div className="mt-4 space-y-0.5">
-								{tracklist.map((t, i) => (
-									<p
-										key={i}
-										className="font-mono text-[9px] opacity-30"
-										style={{ color: ink }}
-									>
-										{t}
-									</p>
-								))}
-							</div>
-						)}
-
-						{/* Metadata footer */}
-						<div
-							className="grid grid-cols-2 gap-x-4 pt-3 mt-auto font-mono text-[0.6rem] uppercase tracking-wider"
-							style={{
-								borderTop: `1px solid ${ink}20`,
-								color: ink,
-								opacity: 0.5,
-							}}
-						>
-							{settings.showYear && <span>Release // {year}</span>}
-							{settings.showGenre && <span>Genre // {genre}</span>}
-							{settings.showLabel && <span>Label // {label}</span>}
-						</div>
-					</div>
+					{currentLayout.render(layoutProps)}
 				</div>
 			</div>
 		</div>

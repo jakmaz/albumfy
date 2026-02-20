@@ -1,5 +1,6 @@
 import { Switch } from "@/components/ui/switch";
 import { cn } from "@/lib/utils";
+import { layouts, layoutIcons } from "@/components/layouts";
 
 interface DesignTabProps {
 	layout: string;
@@ -16,12 +17,6 @@ interface DesignTabProps {
 	onLayoutChange: (l: string) => void;
 	onSettingsChange: (s: Partial<typeof settings>) => void;
 }
-
-const layouts = [
-	{ id: "standard", label: "Standard" },
-	{ id: "centered", label: "Centered" },
-	{ id: "type-only", label: "Type Only" },
-];
 
 const paperSwatches = [
 	{ id: "cream", color: "#f4f1ea" },
@@ -50,25 +45,18 @@ export const DesignTab = ({ layout, settings, onLayoutChange, onSettingsChange }
 			{/* Layout */}
 			<div className="flex flex-col gap-3">
 				<span className="font-mono text-xs uppercase tracking-widest text-neutral-500">Layout</span>
-				<div className="grid grid-cols-3 gap-2">
+				<div className="grid grid-cols-2 gap-2">
 					{layouts.map((l) => (
 						<button
 							key={l.id}
 							className={cn(
-								"aspect-square border flex flex-col items-center justify-center gap-1 transition-all duration-300",
+								"aspect-square border flex flex-col items-center justify-center gap-2 transition-all duration-300",
 								layout === l.id ? "border-neutral-900 bg-neutral-100" : "border-neutral-300 bg-white hover:border-neutral-500",
 							)}
 							onClick={() => onLayoutChange(l.id)}
 						>
-							<div className="w-5 h-7 border border-neutral-400 relative">
-								{l.id === "standard" && <div className="absolute bottom-1 left-1 right-1 h-1.5 bg-neutral-400" />}
-								{l.id === "centered" && <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 border border-neutral-400 rounded-full" />}
-								{l.id === "type-only" && (
-									<>
-										<div className="absolute top-1 left-1 right-1 h-1 bg-neutral-400" />
-										<div className="absolute top-3 left-1 right-2 h-0.5 bg-neutral-300" />
-									</>
-								)}
+							<div className="w-8 h-10 text-neutral-600">
+								{layoutIcons[l.id]}
 							</div>
 							<span className="font-mono text-[9px] uppercase">{l.label}</span>
 						</button>
