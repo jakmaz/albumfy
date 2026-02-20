@@ -1,9 +1,8 @@
 import { useState, useRef } from "react";
 import {
-	DetailsTab,
+	DesignTab,
 	ExportTab,
 	SearchTab,
-	StyleTab,
 } from "@/components/editor/tabs";
 import Navbar from "@/components/navbar";
 import PosterPreview from "@/components/poster-preview";
@@ -21,8 +20,7 @@ const mockResults = [
 
 const tabs = [
 	{ id: "search", label: "Search" },
-	{ id: "style", label: "Style" },
-	{ id: "details", label: "Details" },
+	{ id: "design", label: "Design" },
 	{ id: "export", label: "Export" },
 ];
 
@@ -35,7 +33,6 @@ const Create = () => {
 	} | null>(null);
 	const [showResults, setShowResults] = useState(false);
 	const [layout, setLayout] = useState("standard");
-	const [orientation, setOrientation] = useState("portrait");
 	const posterRef = useRef<HTMLDivElement>(null);
 	const [manualInput, setManualInput] = useState({
 		title: "",
@@ -43,6 +40,7 @@ const Create = () => {
 		year: "",
 		genre: "",
 		label: "",
+		tracklist: "",
 	});
 	const [settings, setSettings] = useState({
 		paperColor: "cream",
@@ -131,20 +129,11 @@ const Create = () => {
 							/>
 						)}
 
-						{activeTab === "style" && (
-							<StyleTab
+						{activeTab === "design" && (
+							<DesignTab
 								layout={layout}
-								orientation={orientation}
 								settings={settings}
 								onLayoutChange={setLayout}
-								onOrientationChange={setOrientation}
-								onSettingsChange={updateSettings}
-							/>
-						)}
-
-						{activeTab === "details" && (
-							<DetailsTab
-								settings={settings}
 								onSettingsChange={updateSettings}
 							/>
 						)}

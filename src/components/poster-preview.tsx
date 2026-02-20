@@ -19,6 +19,7 @@ interface PosterPreviewProps {
 		year: string;
 		genre: string;
 		label: string;
+		tracklist: string;
 	};
 }
 
@@ -65,6 +66,7 @@ const PosterPreview = ({
 	const year = manualInput?.year || "2024";
 	const genre = manualInput?.genre || "Electronic";
 	const label = manualInput?.label || "Independent";
+	const tracklist = manualInput?.tracklist ? manualInput.tracklist.split('\n').filter(t => t.trim()) : mockTracks;
 	const bg = paperColors[settings.paperColor] || paperColors.cream;
 	const ink = inkColors[settings.inkColor] || inkColors.black;
 	const fontClass = fontClasses[settings.font] || fontClasses.inter;
@@ -160,9 +162,9 @@ const PosterPreview = ({
 						{/* Tracklist */}
 						{settings.showTracklist && (
 							<div className="mt-4 space-y-0.5">
-								{mockTracks.map((t) => (
+								{tracklist.map((t, i) => (
 									<p
-										key={t}
+										key={i}
 										className="font-mono text-[9px] opacity-30"
 										style={{ color: ink }}
 									>

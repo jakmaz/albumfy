@@ -14,6 +14,7 @@ interface SearchTabProps {
     year: string;
     genre: string;
     label: string;
+    tracklist: string;
   };
   onManualInputChange: (input: Partial<typeof manualInput>) => void;
 }
@@ -123,6 +124,20 @@ export const SearchTab = ({
           onChange={(value) => onManualInputChange({ label: value })}
           placeholder="Record label"
         />
+        
+        {/* Tracklist */}
+        <div className="flex flex-col gap-1">
+          <label className="font-mono text-[10px] uppercase tracking-widest text-neutral-500">
+            Tracklist
+          </label>
+          <textarea
+            value={manualInput.tracklist}
+            onChange={(e) => onManualInputChange({ tracklist: e.target.value })}
+            placeholder="01 - Track Name&#10;02 - Track Name&#10;03 - Track Name"
+            className="w-full border-b-2 border-neutral-300 bg-transparent py-2 text-sm font-mono outline-none focus:border-neutral-900 transition-colors placeholder:text-neutral-400 resize-none"
+            rows={4}
+          />
+        </div>
       </div>
 
       {/* Tip */}
