@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {
 	DetailsTab,
 	ExportTab,
@@ -8,6 +8,7 @@ import {
 import Navbar from "@/components/navbar";
 import PosterPreview from "@/components/poster-preview";
 import { cn } from "@/lib/utils";
+import type { PosterSize, Quality, Format } from "@/lib/export";
 
 const mockResults = [
 	{ title: "OK Computer", artist: "Radiohead", type: "album" },
@@ -35,6 +36,7 @@ const Create = () => {
 	const [showResults, setShowResults] = useState(false);
 	const [layout, setLayout] = useState("standard");
 	const [orientation, setOrientation] = useState("portrait");
+	const posterRef = useRef<HTMLDivElement>(null);
 	const [settings, setSettings] = useState({
 		paperColor: "cream",
 		inkColor: "black",
@@ -44,8 +46,9 @@ const Create = () => {
 		showTracklist: false,
 		showGenre: true,
 		showLabel: false,
-		posterSize: "a3",
-		quality: "high",
+		posterSize: "a3" as PosterSize,
+		quality: "high" as Quality,
+		format: "pdf" as Format,
 	});
 
 	const filtered =
@@ -75,11 +78,13 @@ const Create = () => {
 					}}
 				>
 					<Navbar />
-					<PosterPreview
-						selection={selection}
-						layout={layout}
-						settings={settings}
-					/>
+					<div ref={posterRef}>
+						<PosterPreview
+							selection={selection}
+							layout={layout}
+							settings={settings}
+						/>
+					</div>
 				</div>
 
 				{/* Controls Panel */}
@@ -138,6 +143,8 @@ const Create = () => {
 							<ExportTab
 								settings={settings}
 								onSettingsChange={updateSettings}
+								posterRef={posterRef}
+								selection={selection}
 							/>
 						)}
 					</div>
