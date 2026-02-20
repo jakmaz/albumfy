@@ -1,7 +1,12 @@
 import { useState } from "react";
+import {
+	DetailsTab,
+	ExportTab,
+	SearchTab,
+	StyleTab,
+} from "@/components/editor/tabs";
 import Navbar from "@/components/navbar";
 import PosterPreview from "@/components/poster-preview";
-import { SearchTab, StyleTab, DetailsTab, ExportTab } from "@/components/editor/tabs";
 import { cn } from "@/lib/utils";
 
 const mockResults = [
@@ -23,7 +28,10 @@ const tabs = [
 const Create = () => {
 	const [activeTab, setActiveTab] = useState("search");
 	const [query, setQuery] = useState("");
-	const [selection, setSelection] = useState<{ title: string; artist: string } | null>(null);
+	const [selection, setSelection] = useState<{
+		title: string;
+		artist: string;
+	} | null>(null);
 	const [showResults, setShowResults] = useState(false);
 	const [layout, setLayout] = useState("standard");
 	const [orientation, setOrientation] = useState("portrait");
@@ -56,15 +64,22 @@ const Create = () => {
 	return (
 		<div className="min-h-screen h-screen bg-neutral-100 overflow-hidden">
 			<div className="fixed inset-0 pointer-events-none z-[9999] opacity-[0.03] bg-[url('data:image/svg+xml,%3Csvg%20viewBox=%270%200%20200%20200%27%20xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cfilter%20id=%27noiseFilter%27%3E%3CfeTurbulence%20type=%27fractalNoise%27%20baseFrequency=%270.65%27%20numOctaves=%273%27%20stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect%20width=%27100%25%27%20height=%27100%25%27%20filter=%27url(%23noiseFilter)%27/%3E%3C/svg%3E')]" />
-			<Navbar />
 
 			<div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] h-full">
 				{/* Canvas Area */}
 				<div
-					className="flex items-center justify-center p-8 lg:p-16 pt-20"
-					style={{ background: "radial-gradient(circle at center, hsl(37 18% 86%) 0%, hsl(37 18% 82%) 100%)" }}
+					className="flex items-center justify-center p-8 lg:p-16 pt-20 relative"
+					style={{
+						background:
+							"radial-gradient(circle at center, hsl(37 18% 86%) 0%, hsl(37 18% 82%) 100%)",
+					}}
 				>
-					<PosterPreview selection={selection} layout={layout} settings={settings} />
+					<Navbar />
+					<PosterPreview
+						selection={selection}
+						layout={layout}
+						settings={settings}
+					/>
 				</div>
 
 				{/* Controls Panel */}
@@ -113,11 +128,17 @@ const Create = () => {
 						)}
 
 						{activeTab === "details" && (
-							<DetailsTab settings={settings} onSettingsChange={updateSettings} />
+							<DetailsTab
+								settings={settings}
+								onSettingsChange={updateSettings}
+							/>
 						)}
 
 						{activeTab === "export" && (
-							<ExportTab settings={settings} onSettingsChange={updateSettings} />
+							<ExportTab
+								settings={settings}
+								onSettingsChange={updateSettings}
+							/>
 						)}
 					</div>
 				</div>

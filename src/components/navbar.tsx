@@ -1,28 +1,19 @@
-import { Link, useLocation } from "react-router-dom";
+import { Github } from "lucide-react";
 import Logo from "@/components/logo";
 
 const Navbar = () => {
-	const location = useLocation();
-	const isEditor = location.pathname === "/create";
-
 	return (
-		<nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between h-14 px-6 md:px-8">
+		<nav className="absolute top-0 left-0 w-full z-50 px-8 py-6 flex justify-between items-start">
 			<Logo />
-			<div className="flex items-center gap-4">
-				{!isEditor && (
-					<Link
-						to="/create"
-						className="font-mono text-xs uppercase tracking-[2px] text-neutral-600 hover:text-neutral-900 transition-colors"
-					>
-						Open Lab →
-					</Link>
-				)}
-				{isEditor && (
-					<span className="font-mono text-xs uppercase tracking-[2px] text-neutral-500">
-						Lab. v0.42
-					</span>
-				)}
-			</div>
+			<a
+				href="https://github.com/jakmaz/albumfy"
+				target="_blank"
+				rel="noopener noreferrer"
+				className="bg-neutral-900 text-[#f4f1ea] px-3 py-1.5 flex items-center justify-center"
+				style={{ clipPath: "polygon(0% 0%, 100% 0%, 95% 100%, 5% 100%)" }}
+			>
+				<Github className="w-6 h-6" />
+			</a>
 		</nav>
 	);
 };
