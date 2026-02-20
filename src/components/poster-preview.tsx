@@ -54,7 +54,12 @@ const mockTracks = [
 	"08 — Neon Echoes",
 ];
 
-const PosterPreview = ({ selection, layout, settings, manualInput }: PosterPreviewProps) => {
+const PosterPreview = ({
+	selection,
+	layout,
+	settings,
+	manualInput,
+}: PosterPreviewProps) => {
 	const title = selection?.title || manualInput?.title || "Neon Echoes";
 	const artist = selection?.artist || manualInput?.artist || "Glass Parallel";
 	const year = manualInput?.year || "2024";
@@ -66,13 +71,16 @@ const PosterPreview = ({ selection, layout, settings, manualInput }: PosterPrevi
 
 	return (
 		<div
-			className="relative animate-slide-up"
-			style={{ perspective: "1000px" }}
+			className="relative"
+			style={{
+				perspective: "1000px",
+				width: "380px",
+				height: "538px",
+			}}
 		>
 			<div
-				className="relative w-full max-w-[420px] mx-auto transition-all duration-500 hover:scale-[1.02]"
+				className="relative w-full h-full transition-all duration-500"
 				style={{
-					aspectRatio: "1 / 1.414",
 					transform: "rotateX(3deg) rotateY(-3deg)",
 				}}
 				onMouseEnter={(e) => {
@@ -173,15 +181,9 @@ const PosterPreview = ({ selection, layout, settings, manualInput }: PosterPrevi
 								opacity: 0.5,
 							}}
 						>
-							{settings.showYear && (
-								<span>Release // {year}</span>
-							)}
-							{settings.showGenre && (
-								<span>Genre // {genre}</span>
-							)}
-							{settings.showLabel && (
-								<span>Label // {label}</span>
-							)}
+							{settings.showYear && <span>Release // {year}</span>}
+							{settings.showGenre && <span>Genre // {genre}</span>}
+							{settings.showLabel && <span>Label // {label}</span>}
 						</div>
 					</div>
 				</div>
